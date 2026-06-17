@@ -1,0 +1,17 @@
+{
+  "name": "Simulateur Frais de Creche",
+  "short_name": "Simulateur Creche",
+  "description": "Estimez le cout reel de la creche apres aides CAF et credit d'impot. Simulateur gratuit.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#4f46e5",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulateur de frais de garde en crèche - Estimez le coût réel de la crèche après aides CAF et crédit d'impôt">
+    <meta name="author" content="Mottalib Radif, MBA INSEAD">
+    <title>Simulateur Frais de Crèche - Estimez votre reste à charge</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "#organization",
+                "name": "Simulateur Crèche",
+                "url": "https://simulateur-creche.fr",
+                "description": "Simulateur de frais de garde en crèche en France - Calcul du reste à charge après aides CAF et crédit d'impôt"
+            },
+            {
+                "@type": "Person",
+                "@id": "#author",
+                "name": "Mottalib Radif",
+                "honorificSuffix": "MBA INSEAD",
+                "image": "team/mottalib-radif.jpg",
+                "jobTitle": "Fondateur",
+                "worksFor": {
+                    "@id": "#organization"
+                }
+            },
+            {
+                "@type": "WebApplication",
+                "name": "Simulateur Frais de Crèche",
+                "description": "Estimez le coût réel de la crèche après aides CAF et crédit d'impôt",
+                "url": "https://simulateur-creche.fr",
+                "applicationCategory": "FinanceApplication",
+                "operatingSystem": "All",
+                "author": {
+                    "@id": "#author"
+                },
+                "publisher": {
+                    "@id": "#organization"
+                },
+                "inLanguage": "fr",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "EUR"
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Simulateur Crèche</h1>
+            <p class="tagline">Estimez le coût réel de la garde de votre enfant</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="intro">
+                <h2>Combien va vous coûter la crèche ?</h2>
+                <p>Calculez en quelques clics votre reste à charge mensuel et annuel, après aides CAF et crédit d'impôt.</p>
+            </section>
+
+            <div class="simulator-wrapper">
+                <!-- Formulaire de simulation -->
+                <section class="simulator" aria-label="Formulaire de simulation">
+                    <h3 class="section-title">Vos informations</h3>
+
+                    <!-- Revenus du foyer -->
+                    <div class="input-group">
+                        <label class="input-label">Revenus du foyer</label>
+                        <div class="revenue-inputs">
+                            <div class="input-field">
+                                <label for="revenu-mensuel">Revenu mensuel net</label>
+                                <div class="input-with-unit">
+                                    <input
+                                        type="text"
+                                        id="revenu-mensuel"
+                                        inputmode="numeric"
+                                        placeholder="3 500"
+                                        aria-describedby="revenu-help"
+                                    >
+                                    <span class="unit">€/mois</span>
+                                </div>
+                            </div>
+                            <span class="revenue-separator">ou</span>
+                            <div class="input-field">
+                                <label for="revenu-annuel">Revenu annuel net</label>
+                                <div class="input-with-unit">
+                                    <input
+                                        type="text"
+                                        id="revenu-annuel"
+                                        inputmode="numeric"
+                                        placeholder="42 000"
+                                    >
+                                    <span class="unit">€/an</span>
+                                </div>
+                            </div>
+                        </div>
+                        <small id="revenu-help" class="help-text">Remplissez l'un ou l'autre, le calcul se fait automatiquement</small>
+                    </div>
+
+                    <!-- Nombre d'enfants -->
+                    <div class="input-group">
+                        <label class="input-label">Nombre d'enfants à charge</label>
+                        <div class="counter">
+                            <button type="button" class="counter-btn" id="enfants-minus" aria-label="Réduire le nombre d'enfants">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <span class="counter-value" id="enfants-value">1</span>
+                            <button type="button" class="counter-btn" id="enfants-plus" aria-label="Augmenter le nombre d'enfants">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Jours de garde -->
+                    <div class="input-group">
+                        <label class="input-label">Jours de garde par semaine</label>
+                        <div class="days-selector">
+                            <button type="button" class="day-btn" data-days="1">1 jour</button>
+                            <button type="button" class="day-btn" data-days="2">2 jours</button>
+                            <button type="button" class="day-btn" data-days="3">3 jours</button>
+                            <button type="button" class="day-btn" data-days="4">4 jours</button>
+                            <button type="button" class="day-btn active" data-days="5">5 jours</button>
+                        </div>
+                    </div>
+
+                    <!-- Zone géographique -->
+                    <div class="input-group">
+                        <label class="input-label">Zone géographique</label>
+                        <div class="zone-selector">
+                            <button type="button" class="zone-btn" data-zone="idf">
+                                <span class="zone-icon">🏙️</span>
+                                <span class="zone-text">Île-de-France</span>
+                            </button>
+                            <button type="button" class="zone-btn active" data-zone="province">
+                                <span class="zone-icon">🏡</span>
+                                <span class="zone-text">Hors Île-de-France</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Résultats -->
+                <section class="results" aria-label="Résultats de la simulation">
+                    <h3 class="section-title">Votre estimation</h3>
+
+                    <!-- Crèche Publique -->
+                    <div class="result-card result-card--public">
+                        <div class="result-header">
+                            <h4 class="result-title">
+                                <span class="result-icon">🏫</span>
+                                Crèche publique
+                            </h4>
+                            <span class="result-badge">Barème PSU</span>
+                        </div>
+
+                        <div class="result-rows">
+                            <div class="result-row">
+                                <span class="result-label">Coût brut</span>
+                                <span class="result-value">
+                                    <span id="public-cout-mois">--</span> €/mois
+                                    <small>(<span id="public-cout-an">--</span> €/an)</small>
+                                </span>
+                            </div>
+                            <div class="result-row result-row--highlight">
+                                <span class="result-label">Reste à charge</span>
+                                <span class="result-value result-value--primary">
+                                    <span id="public-reste-mois">--</span> €/mois
+                                    <small>(<span id="public-reste-an">--</span> €/an)</small>
+                                </span>
+                            </div>
+                            <div class="result-row result-row--final">
+                                <span class="result-label">
+                                    Après crédit d'impôt
+                                    <span class="info-tooltip" data-tooltip="50% des dépenses, plafonné à 1 750€/an/enfant">?</span>
+                                </span>
+                                <span class="result-value result-value--success">
+                                    <span id="public-apres-impot-mois">--</span> €/mois
+                                    <small>(<span id="public-apres-impot-an">--</span> €/an)</small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Crèche Privée -->
+                    <div class="result-card result-card--private">
+                        <div class="result-header">
+                            <h4 class="result-title">
+                                <span class="result-icon">🏢</span>
+                                Crèche privée
+                            </h4>
+                            <span class="result-badge">Avec CMG</span>
+                        </div>
+
+                        <div class="result-rows">
+                            <div class="result-row">
+                                <span class="result-label">Coût brut</span>
+                                <span class="result-value">
+                                    <span id="prive-cout-mois">--</span> €/mois
+                                    <small>(<span id="prive-cout-an">--</span> €/an)</small>
+                                </span>
+                            </div>
+                            <div class="result-row">
+                                <span class="result-label">Aides CAF estimées</span>
+                                <span class="result-value result-value--aid">
+                                    -<span id="prive-aide-mois">--</span> €/mois
+                                    <small>(-<span id="prive-aide-an">--</span> €/an)</small>
+                                </span>
+                            </div>
+                            <div class="result-row result-row--highlight">
+                                <span class="result-label">Reste à charge</span>
+                                <span class="result-value result-value--primary">
+                                    <span id="prive-reste-mois">--</span> €/mois
+                                    <small>(<span id="prive-reste-an">--</span> €/an)</small>
+                                </span>
+                            </div>
+                            <div class="result-row result-row--final">
+                                <span class="result-label">
+                                    Après crédit d'impôt
+                                    <span class="info-tooltip" data-tooltip="50% des dépenses, plafonné à 1 750€/an/enfant">?</span>
+                                </span>
+                                <span class="result-value result-value--success">
+                                    <span id="prive-apres-impot-mois">--</span> €/mois
+                                    <small>(<span id="prive-apres-impot-an">--</span> €/an)</small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparaison -->
+                    <div class="comparison-box">
+                        <div class="comparison-header">
+                            <span class="comparison-icon">💡</span>
+                            <span>Comparaison après crédit d'impôt</span>
+                        </div>
+                        <div class="comparison-content">
+                            <p id="comparison-text">Renseignez vos informations pour voir la comparaison</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Disclaimer -->
+            <section class="disclaimer">
+                <p>
+                    <strong>Simulation indicative</strong> — Cette estimation ne remplace pas un calcul officiel CAF ou fiscal.
+                    Les montants réels peuvent varier selon votre situation personnelle et les évolutions réglementaires.
+                </p>
+            </section>
+
+            <!-- Informations complémentaires -->
+            <section class="info-section">
+                <h3>Comment sont calculés ces montants ?</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🏫 Crèche publique (PSU)</h4>
+                        <p>Le tarif est calculé selon le barème national de la PSU (Prestation de Service Unique), basé sur vos revenus et le nombre d'enfants à charge. Les aides CAF sont directement intégrées dans le tarif.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>🏢 Crèche privée (CMG)</h4>
+                        <p>Le coût brut est estimé selon les moyennes du marché. Le CMG (Complément de libre choix du Mode de Garde) est versé par la CAF selon vos revenus et le nombre d'enfants.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>💰 Crédit d'impôt</h4>
+                        <p>Vous pouvez bénéficier d'un crédit d'impôt égal à 50% des dépenses de garde, dans la limite de 3 500€ de dépenses par enfant et par an, soit un crédit maximum de 1 750€.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Simulateur Crèche — Outil indicatif à usage informatif uniquement</p>
+            <nav class="footer-nav" aria-label="Liens du pied de page">
+                <a href="a-propos.html">À propos</a>
+                <span class="footer-sep">|</span>
+                <a href="mentions-legales.html">Mentions légales</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
